@@ -14,7 +14,7 @@ def home():
 
 @app.get("/hello")
 def read_root():
-    return {"message": "Hello World from FastAPI!"}
+    return {"message": "Hello Working!"}
 
 # CORS setup (important for Flutter)
 origins = ["*"] 
@@ -25,3 +25,4 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
