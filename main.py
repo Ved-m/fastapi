@@ -1,12 +1,23 @@
+# main.py
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# ⚠️ IMPORTANT: Add CORS middleware for Flutter to access the API.
-# In development, we allow all origins.
-origins = ["*"]
+# 💡 FIX 1: Ensure you have a route for the root path ("/") 
+# that Vercel tries to access when checking the deployment URL.
 
+@app.get("/")
+def home():
+    return {"message": "Welcome to FastAPI on Vercel!"} # <-- This handles the root URL
+
+@app.get("/hello")
+def read_root():
+    return {"message": "Hello World from FastAPI!"}
+
+# CORS setup (important for Flutter)
+origins = ["*"] 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -14,8 +25,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-@app.get("/hello")
-def read_root():
-    # The API returns a JSON object: {"message": "Hello World"}
-    return {"message": "Hello World"}
