@@ -10,3 +10,4 @@ httpx==0.25.1
 python-multipart==0.0.6
 torch==2.0.1+cpu  # CPU-only version for Vercel
 transformers==4.30.0
+
