@@ -14,7 +14,7 @@ def home():
 
 @app.get("/hello")
 def read_root():
-    return {"message": "Hello Working!"}
+    return {"message": "Hello !"}
 
 # CORS setup (important for Flutter)
 origins = ["*"] 
@@ -25,4 +25,5 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
